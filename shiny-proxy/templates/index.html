@@ -43,15 +43,15 @@
 <body>
 	<!-- navigation bar -->
 	<div th:replace="../fragments/navbar :: navbar"></div>
-	<div class="container" id="applist">
-		<h1 class="mb-4">Tonga Crop Survey Portal</h1>
+	<div class="container" id="applist">	
+		<h1 class="mb-4">Tonga Crop Survey Apps</h1>
 		<!-- <p class="mb-4">Explore, visualise, and analyse Tonga Crop Survey data</p> -->
 		<div th:each="app: ${apps}">
 			<div class="card mb-4 h-100">
 				<img class="card-img-top" style="width: 100%; height: 20vh; object-fit: cover;" th:src="@{/assets/img/{name}.jpg(name=${app.id})}"></img>
 				<h3 th:text="${app.displayName == null} ? ${app.id} : ${app.displayName}"></h3>
 				<p th:if="${app.description != null}" th:text="${app.description}"></p>
-				<a class="btn btn-primary" th:href="@{/app/}+${app.id}">Launch App</a>
+				<a class="btn btn-primary" th:href="@{/app_direct/}+${app.id}">Launch App</a>
 			</div>
 		</div>
 	</div>

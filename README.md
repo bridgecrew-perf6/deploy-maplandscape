@@ -1,5 +1,7 @@
 # deploy-maplandscape
 
+Instructions to deploy *maplandscape* dashboard apps for exploring and analysing geospatial data in GeoPackage files in a web browswer. It deploys *maplandscape* and *maplandscape-view* Shiny web apps in docker containers using Shiny Proxy as part of a docker swarm. Traefik is used as a reverse proxy and load balancer and Let's Encrypt is used for TLS. The deployment architecture is based on this [resource](https://www.databentobox.com/2020/05/31/shinyproxy-with-docker-swarm/).
+
 # Docker 
 
 Install Docker (requires root or sudo privelages to run) following these [instructions](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository).
@@ -236,13 +238,6 @@ Add the apps as services in `docker-compose.shinyproxy.yml` and update the `appl
 
 ### Build maplandscape-view
 
-Make an app directory:
-
-```
-mkdir maplandscape-view
-cd maplandscape-view
-```
-
 Download maplandscape-view from GitHub:
 
 ```
@@ -256,20 +251,43 @@ cd app
 cp config-example.yml config.yml
 ```
 
-In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape-view service as:
+Build the docker image:
 
 ```
-image: 127.0.0.1:5000/maplandscape-view
+cd ..
+docker build -t 127.0.0.1:5000/maplandscape-view .
 ```
+
+Push to local registry:
+
+```
+docker push 127.0.0.1:5000/maplandscape-view
+```
+
+In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape-view service as `image: 127.0.0.1:5000/maplandscape-view`
 
 ## Build maplandscape
 
-## Shiny Proxy Image
+Download the app from GitHub:
 
-## Shiny App Image
+```
+git clone https://github.com/livelihoods-and-landscapes/maplandscape.git
+```
 
+Build the docker image:
 
-Download the apps from GitHub and include a `Dockerfile` to build the app. 
+```
+cd inst
+docker build -t 127.0.0.1:5000/maplandscape .
+```
+
+Push to local registry:
+
+```
+docker push 127.0.0.1:5000/maplandscape
+```
+
+In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape service as `image: 127.0.0.1:5000/maplandscape`
 
 ## Configure Shiny Proxy
 
@@ -278,10 +296,6 @@ Configure the Shiny Proxy `application.yml` file in the `shiny-proxy` directory.
 In the `shiny-proxy/templates/assets/img` directory include jpg images associated with the card display for each app on the landing page. The image file should have the same name as the app id in the `application.yml` file. 
 
 In `shiny-proxy/templates/assets/index.html` make any edits to the landing page UI as required. 
-
-## Configure Shiny Apps
-
-Add any necessary configurations in downloaded Shiny apps (e.g. updating `config.yml` files).
 
 ## Deploy Shiny Proxy 
 
