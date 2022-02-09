@@ -118,7 +118,7 @@ docker swarm join-token worker
 docker swarm join-token manager
 ```
 
-# Set up Traefik 
+# Setup Traefik 
 
 Create an overlay network to allow Traefik to communicate with Shiny Proxy. 
 
