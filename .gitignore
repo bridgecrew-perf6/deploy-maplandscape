@@ -1,5 +1,6 @@
 
 digital-ocean-notes.md
+notes.md
 
 templates/.DS_Store
 
@@ -8,3 +9,7 @@ templates/assets/.DS_Store
 templates/assets/img/maplandscape-view.jpg
 
 .DS_Store
+
+maplandscape/
+
+maplandscape-view/

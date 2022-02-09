@@ -1,9 +1,9 @@
-version: '3.9'
+version: '3.3'
 
 services:
 
   shinyproxy:
-    image: openanalytics/shinyproxy
+    image: 127.0.0.1:5000/shinyproxy
     # The labels section is where you specify configuration values for Traefik.
     # Docker labels don’t do anything by themselves, but Traefik reads these so
     # it knows how to treat containers.
@@ -35,11 +35,14 @@ services:
       - ./shiny-proxy/application.yml:/opt/shinyproxy/application.yml
       - /var/run/docker.sock:/var/run/docker.sock
       - ./shiny-proxy/templates:/opt/shinyproxy/templates
-  
+
   maplandscape-view:
-    build: 
-      context: ./maplandscape-view
-    image: maplandscape-view
+    image: 127.0.0.1:5000/maplandscape-view
+    networks:
+      - sp-net
+
+  maplandscape:
+    image: 127.0.0.1:5000/maplandscape
     networks:
       - sp-net
 

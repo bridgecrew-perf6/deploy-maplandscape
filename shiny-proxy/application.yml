@@ -4,9 +4,9 @@ proxy:
   template-path: ./templates
   hide-navbar: true
   
-  container-wait-time: 30000 # how long should we wait for the container to spin up (30s as default)
-  heartbeat-rate: 10000 # the user's browser will send a heartbeat call every heartbeat-rate milliseconds (10s as default)
-  heartbeat-timeout: 60000 # if the server does not receive a heartbeat for heartbeat-timeout milliseconds, the relevant proxy will be released (60s as default)
+  container-wait-time: 60000 # how long should we wait for the container to spin up (30s as default)
+  heartbeat-rate: 20000 # the user's browser will send a heartbeat call every heartbeat-rate milliseconds (10s as default)
+  heartbeat-timeout: 120000 # if the server does not receive a heartbeat for heartbeat-timeout milliseconds, the relevant proxy will be released (60s as default)
   
   authentication: none
   
@@ -23,6 +23,14 @@ proxy:
       description: Explore Tonga Crop Survey data on web maps and generate summary reports for villages and districts.
       container-cmd: ["R", "-e", "shiny::runApp('/root/app', port = 3838, host = '0.0.0.0')"]
       container-image: maplandscape-view 
+      container-network: sp-net
+
+  specs:
+    - id: maplandscape
+      display-name: Geospatial Data Explorer
+      description: Analyse and explore geospatial data with interactive tables, web maps, and custom charts.
+      container-cmd: ["R", "-e", "shiny::runApp('/root/app', port = 3838, host = '0.0.0.0')"]
+      container-image: maplandscape 
       container-network: sp-net
 
 server:
