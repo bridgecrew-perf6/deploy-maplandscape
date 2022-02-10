@@ -19,7 +19,7 @@ proxy:
   # Below is a list of apps and their config
   specs:
     - id: maplandscape-view
-      display-name: Tonga Crop Survey Data Explorer
+      display-name: Tonga Crop Survey Viewer
       description: Explore Tonga Crop Survey data on web maps and generate summary reports for villages and districts.
       container-cmd: ["R", "-e", "shiny::runApp('/root/app', port = 3838, host = '0.0.0.0')"]
       container-image: 127.0.0.1:5000/maplandscape-view 
