@@ -1,5 +1,5 @@
 proxy:
-  title: Tonga Crop Survey Portal
+  title: Maplandscape (Development Version)
   port: 8080 # use Port 8080 for ShinyProxy
   template-path: ./templates
   hide-navbar: true
@@ -19,15 +19,15 @@ proxy:
   # Below is a list of apps and their config
   specs:
     - id: maplandscape-view
-      display-name: Tonga Crop Survey Viewer
-      description: Explore Tonga Crop Survey data on web maps and generate summary reports for villages and districts.
+      display-name: Maplandscape View
+      description: View geospatial data on web maps and generate reports, map, and chart outputs. 
       container-cmd: ["R", "-e", "shiny::runApp('/root/app', port = 3838, host = '0.0.0.0')"]
       container-image: 127.0.0.1:5000/maplandscape-view 
       container-network: sp-net
 
     - id: maplandscape
-      display-name: Geospatial Data Explorer
-      description: Analyse and explore geospatial data with interactive tables, web maps, and custom charts.
+      display-name: Maplandscape
+      description: Query, analyse and explore geospatial data with interactive tables, web maps, and custom charts.
       container-cmd: ["R", "-e", "shiny::runApp('/root/app', port = 3838, host = '0.0.0.0')"]
       container-image: 127.0.0.1:5000/maplandscape 
       container-network: sp-net
