@@ -46,6 +46,11 @@ services:
     networks:
       - sp-net
 
+  maplandscape-admin:
+    image: 127.0.0.1:5000/maplandscape-admin
+    networks:
+      - sp-net
+
 networks:
   traefik-public:
     external: true

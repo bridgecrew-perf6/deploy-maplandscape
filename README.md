@@ -289,6 +289,29 @@ docker push 127.0.0.1:5000/maplandscape
 
 In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape service as `image: 127.0.0.1:5000/maplandscape`
 
+## Build maplandscape-admin
+
+Download the app from GitHub:
+
+```
+git clone https://github.com/livelihoods-and-landscapes/maplandscape-admin.git
+```
+
+Build the docker image:
+
+```
+cd inst
+docker build -t 127.0.0.1:5000/maplandscape-admin .
+```
+
+Push to local registry:
+
+```
+docker push 127.0.0.1:5000/maplandscape-admin
+```
+
+In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape service as `image: 127.0.0.1:5000/maplandscape-admin`
+
 ## Configure Shiny Proxy
 
 Configure the Shiny Proxy `application.yml` file in the `shiny-proxy` directory. 

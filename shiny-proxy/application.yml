@@ -32,6 +32,13 @@ proxy:
       container-image: 127.0.0.1:5000/maplandscape 
       container-network: sp-net
 
+    - id: maplandscape-admin
+      display-name: Maplandscape Admin
+      description: Manage your QFieldCloud projects and credentials.
+      container-cmd: ["R", "-e", "shiny::runApp('/root/app', port = 3838, host = '0.0.0.0')"]
+      container-image: 127.0.0.1:5000/maplandscape-admin 
+      container-network: sp-net
+
 server:
   useForwardHeaders: true # this is very important to make the AWS Cognito auth works
 
