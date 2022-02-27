@@ -59,7 +59,7 @@ From the root of the `deploy-maplandscape` directory:
 If permissions on `create_firewalls.sh` are denied:
 
 ```
-chmod 777 ./scripts/create_firewalls.sh'
+chmod 777 ./scripts/create_firewalls.sh
 ```
 
 #### Manual Firewall Configuration
