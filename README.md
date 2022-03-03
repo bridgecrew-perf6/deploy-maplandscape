@@ -219,6 +219,7 @@ CMD ["java", "-jar", "/opt/shinyproxy/shinyproxy.jar"]
 Build the Shiny Proxy container:
 
 ```
+cd shiny-proxy
 docker build -t 127.0.0.1:5000/shinyproxy .
 ```
 
@@ -226,6 +227,12 @@ Push to registry:
 
 ```
 docker push 127.0.0.1:5000/shinyproxy
+```
+
+Move back to the main deployment directory:
+
+```
+cd ..
 ```
 
 ## Shiny Apps Image
@@ -247,6 +254,7 @@ git clone https://github.com/livelihoods-and-landscapes/maplandscape-view.git
 Make sure the config file is correctly configured:
 
 ```
+cd maplandscape-view
 cd app
 cp config-example.yml config.yml
 ```
@@ -266,6 +274,12 @@ docker push 127.0.0.1:5000/maplandscape-view
 
 In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape-view service as `image: 127.0.0.1:5000/maplandscape-view`
 
+Move back to the main deployment directory:
+
+```
+cd ..
+```
+
 ## Build maplandscape
 
 Download the app from GitHub:
@@ -277,6 +291,7 @@ git clone https://github.com/livelihoods-and-landscapes/maplandscape.git
 Build the docker image:
 
 ```
+cd maplandscape
 cd inst
 docker build -t 127.0.0.1:5000/maplandscape .
 ```
@@ -289,6 +304,13 @@ docker push 127.0.0.1:5000/maplandscape
 
 In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape service as `image: 127.0.0.1:5000/maplandscape`
 
+Move back to the main deployment directory:
+
+```
+cd ..
+cd ..
+```
+
 ## Build maplandscape-admin
 
 Download the app from GitHub:
@@ -300,7 +322,7 @@ git clone https://github.com/livelihoods-and-landscapes/maplandscape-admin.git
 Build the docker image:
 
 ```
-cd inst
+cd maplandscape-admin
 docker build -t 127.0.0.1:5000/maplandscape-admin .
 ```
 
@@ -311,6 +333,12 @@ docker push 127.0.0.1:5000/maplandscape-admin
 ```
 
 In the docker-compose file `docker-compose.shinyproxy.yml` add the image for the maplandscape service as `image: 127.0.0.1:5000/maplandscape-admin`
+
+Move back to the main deployment directory:
+
+```
+cd ..
+```
 
 ## Configure Shiny Proxy
 
