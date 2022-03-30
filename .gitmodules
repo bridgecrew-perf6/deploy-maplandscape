@@ -1,0 +1,3 @@
+[submodule "maplandscape"]
+	path = maplandscape
+	url = https://github.com/livelihoods-and-landscapes/maplandscape
