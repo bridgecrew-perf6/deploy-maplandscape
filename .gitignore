@@ -14,4 +14,8 @@ maplandscape/
 
 maplandscape-view/
 
+maplandscape-admin/
+
 digital_ocean_helpers.sh
+
+config/
