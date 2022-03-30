@@ -1,6 +1,0 @@
-[submodule "maplandscape"]
-	path = maplandscape
-	url = https://github.com/livelihoods-and-landscapes/maplandscape
-[submodule "maplandscape-view"]
-	path = maplandscape-view
-	url = https://github.com/livelihoods-and-landscapes/maplandscape-view
