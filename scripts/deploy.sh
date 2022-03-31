@@ -26,15 +26,6 @@ docker service create --name registry --publish published=5000,target=5000 regis
 # setup postgis
 echo
 echo "####### POSTGIS SETUP #######"
-echo "Enter PostGIS database name:"
-read pg_db
-export POSTGRES_DB=$pg_db
-echo "Enter PostGIS username:"
-read pg_user
-export POSTGRES_USER=$pg_user
-echo "Enter PostGIS password:"
-read pg_pwd
-export POSTGRES_PASSWORD=$pg_pwd
 
 docker network create --driver=overlay sp-net
 docker node update --label-add postgis=true $NODE_DB_ID

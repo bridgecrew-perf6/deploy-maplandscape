@@ -50,6 +50,10 @@ For maplanscape-admin, the config file is located at:
 cp config-example.yml config.yml
 ```
 
+## Configure PostGIS
+
+Edit the `docker-compose.postgis.yml` file to specify the database name, username, and password.
+
 ## Configure Shiny Proxy
 
 Configure the Shiny Proxy `application.yml` file in the `shiny-proxy` directory. 
